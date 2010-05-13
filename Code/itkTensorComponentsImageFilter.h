@@ -33,14 +33,14 @@ public:
   /** ImageDimension enumeration. */
   itkStaticConstMacro(ImageDimension, unsigned int,
                       TInputImage::ImageDimension);
-  /** VectorComponents enumeration. */
-  itkStaticConstMacro(VectorComponents, unsigned int,
+  /** TensorComponents enumeration. */
+  itkStaticConstMacro(TensorComponents, unsigned int,
                       TComponents);
 
   /** Image types. */
   typedef TInputImage                                 InputImageType;
   typedef TOutputImage                                OutputImageType;
-  typedef typename InputImageType::PixelType          VectorType;
+  typedef typename InputImageType::PixelType          TensorType;
   typedef typename OutputImageType::PixelType         PixelType;
   typedef typename OutputImageType::RegionType        OutputRegionType;
 

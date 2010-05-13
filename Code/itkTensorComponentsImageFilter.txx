@@ -14,9 +14,9 @@ template< class TInputImage, class TOutputImage,
 TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::TensorComponentsImageFilter()
 {
-  this->SetNumberOfOutputs( VectorComponents );
+  this->SetNumberOfOutputs( TensorComponents );
   // ImageSource only does this for the first output.
-  for( unsigned int i = 1; i < VectorComponents; i++ )
+  for( unsigned int i = 1; i < TensorComponents; i++ )
     {
     this->SetNthOutput( i, this->MakeOutput( i ) );
     }
@@ -39,20 +39,20 @@ TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
     inIt( input, outputRegion );
   typename std::vector< OutputIteratorType > outIts;
   unsigned int i;
-  for( i = 0; i < VectorComponents; i++ )
+  for( i = 0; i < TensorComponents; i++ )
     {
     OutputIteratorType outIt( dynamic_cast< OutputImageType* >
       ( outputs[i].GetPointer() ), outputRegion );
     outIt.GoToBegin();
     outIts.push_back( outIt );
     }
-  VectorType vector;
+  TensorType tensor;
   for( inIt.GoToBegin(); ! inIt.IsAtEnd(); ++inIt )
     {
-    vector = inIt.Get();
-    for( i = 0; i < VectorComponents; i++ )
+    tensor = inIt.Get();
+    for( i = 0; i < TensorComponents; i++ )
       {
-      outIts[i].Set( static_cast< PixelType >( vector[i] ) );
+      outIts[i].Set( static_cast< PixelType >( tensor[i] ) );
       ++(outIts[i]);
       }
     }
