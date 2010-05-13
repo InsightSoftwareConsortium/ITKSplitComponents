@@ -6,15 +6,23 @@
 namespace itk
 {
 
-/** \class TensorComponents
+/** \class TensorComponentsImageFilter
  *
- * \brief Extract components of an Image of itk::Vector's.
+ * \brief Extract components of an Image of tensors.  Tensor is used in the
+ * general sense -- including first rank tensors (vectors).
  *
- * This class extracts components of itk::Image< itk::Vector<> > or itk::Image<
- * itk::CovariantVector<> > and puts an
- * image on every output corresponding to each component.
+ * This class extracts components of itk::Image of itk::Vector's
+ * itk::CovariantVector, itk::SymmetricSecondRankTensor, or other classes that
+ * have the same interface.  The interface must implement operator[] (
+ * unsigned int ).  Therefore, it does not work itk::Matrix.
+ *
+ * It puts an image on every output corresponding to each component.
  *
  * \sa VectorImageToImageAdaptor
+ * \sa Vector
+ * \sa CovariantVector
+ * \sa SymmetricSecondRankTensor
+ * \sa DiffusionTensor3D
  */
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents = TInputImage::ImageDimension >
