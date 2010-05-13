@@ -1,7 +1,7 @@
-#ifndef __itkVectorToComponentsImageFilter_txx
-#define __itkVectorToComponentsImageFilter_txx
+#ifndef __itkTensorComponentsImageFilter_txx
+#define __itkTensorComponentsImageFilter_txx
 
-#include "itkVectorToComponentsImageFilter.h"
+#include "itkTensorComponentsImageFilter.h"
 
 #include "itkImageRegionConstIterator.h"
 #include "itkImageRegionIterator.h"
@@ -11,8 +11,8 @@ namespace itk
 
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents >
-VectorToComponentsImageFilter< TInputImage, TOutputImage, TComponents >
-::VectorToComponentsImageFilter()
+TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
+::TensorComponentsImageFilter()
 {
   this->SetNumberOfOutputs( VectorComponents );
   // ImageSource only does this for the first output.
@@ -25,7 +25,7 @@ VectorToComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents >
 void
-VectorToComponentsImageFilter< TInputImage, TOutputImage, TComponents >
+TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::ThreadedGenerateData( const OutputRegionType& outputRegion, 
   int threadId )
 {

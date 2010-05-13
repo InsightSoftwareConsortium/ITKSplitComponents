@@ -1,12 +1,12 @@
-#ifndef __itkVectorToComponentsImageFilter_h
-#define __itkVectorToComponentsImageFilter_h
+#ifndef __itkTensorComponentsImageFilter_h
+#define __itkTensorComponentsImageFilter_h
 
 #include "itkImageToImageFilter.h"
 
 namespace itk
 {
 
-/** \class VectorToComponents
+/** \class TensorComponents
  *
  * \brief Extract components of an Image of itk::Vector's.
  *
@@ -18,7 +18,7 @@ namespace itk
  */
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents = TInputImage::ImageDimension >
-class ITK_EXPORT VectorToComponentsImageFilter :
+class ITK_EXPORT TensorComponentsImageFilter :
   public ImageToImageFilter< TInputImage, TOutputImage >
 {
 public:
@@ -37,13 +37,13 @@ public:
   typedef typename OutputImageType::RegionType        OutputRegionType;
 
   /** Standard class typedefs. */
-  typedef VectorToComponentsImageFilter	  Self;
+  typedef TensorComponentsImageFilter	  Self;
   typedef ImageToImageFilter< InputImageType, OutputImageType > Superclass;
   typedef SmartPointer< Self >       Pointer;
   typedef SmartPointer< const Self > ConstPointer;
   
   /** Run-time type information (and related methods). */
-  itkTypeMacro(VectorToComponentsImageFilter, ImageToImageFilter);
+  itkTypeMacro(TensorComponentsImageFilter, ImageToImageFilter);
 
   /** Provide ::New() */
   itkNewMacro( Self );
@@ -52,21 +52,21 @@ public:
   typedef itk::ProcessObject::DataObjectPointerArray  DataObjectPointerArray;
 
 protected:
-  VectorToComponentsImageFilter();
-  virtual ~VectorToComponentsImageFilter() {};
+  TensorComponentsImageFilter();
+  virtual ~TensorComponentsImageFilter() {};
 
   virtual void ThreadedGenerateData( const OutputRegionType& outputRegion,
     int threadId );
 
 private:
-  VectorToComponentsImageFilter( const Self& ); // purposely not implemented
+  TensorComponentsImageFilter( const Self& ); // purposely not implemented
   void operator=( const Self& ); // purposely not implemented
 };
 
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkVectorToComponentsImageFilter.txx"
+#include "itkTensorComponentsImageFilter.txx"
 #endif
 
 #endif

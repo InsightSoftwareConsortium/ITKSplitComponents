@@ -1,23 +1,23 @@
 set( BASELINE_DIR ${ITK_TENSOR_COMPONENTS_SOURCE_DIR}/Testing/Data/Baseline )
 
-add_executable( itkVectorToComponentsImageFilterTest
-  itkVectorToComponentsImageFilterTest.cxx
+add_executable( itkTensorComponentsImageFilterTest
+  itkTensorComponentsImageFilterTest.cxx
   )
-target_link_libraries( itkVectorToComponentsImageFilterTest
+target_link_libraries( itkTensorComponentsImageFilterTest
   ITKCommon
   ITKIO
   )
 
-add_test( itkVectorToComponentsImageFilterTest
-  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/itkVectorToComponentsImageFilterTest
+add_test( itkTensorComponentsImageFilterTest
+  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/itkTensorComponentsImageFilterTest
   --compare
-    ${BASELINE_DIR}/itkVectorToComponentsImageFilterTestBaseline0.mha
-    itkVectorToComponentsImageFilterTestOutput0.mha
+    ${BASELINE_DIR}/itkTensorComponentsImageFilterTestBaseline0.mha
+    itkTensorComponentsImageFilterTestOutput0.mha
   --compare
-    ${BASELINE_DIR}/itkVectorToComponentsImageFilterTestBaseline1.mha
-    itkVectorToComponentsImageFilterTestOutput1.mha
-  itkVectorToComponentsImageFilterTest
-  itkVectorToComponentsImageFilterTestOutput
+    ${BASELINE_DIR}/itkTensorComponentsImageFilterTestBaseline1.mha
+    itkTensorComponentsImageFilterTestOutput1.mha
+  itkTensorComponentsImageFilterTest
+  itkTensorComponentsImageFilterTestOutput
   )
 
 
