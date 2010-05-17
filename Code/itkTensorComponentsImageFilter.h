@@ -23,6 +23,7 @@ namespace itk
  * \sa CovariantVector
  * \sa SymmetricSecondRankTensor
  * \sa DiffusionTensor3D
+ * \sa NthElementImageAdaptor
  */
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents = TInputImage::ImageDimension >
