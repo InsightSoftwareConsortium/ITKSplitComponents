@@ -20,5 +20,3 @@ add_test( itkTensorComponentsImageFilterTest
   itkTensorComponentsImageFilterTestOutput
   )
 
-
-
