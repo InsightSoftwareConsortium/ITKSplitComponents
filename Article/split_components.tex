@@ -1,0 +1,167 @@
+%
+% Complete documentation on the extended LaTeX markup used for Insight
+% documentation is available in ``Documenting Insight'', which is part
+% of the standard documentation for Insight.  It may be found online
+% at:
+%
+%     http://www.itk.org/
+
+\documentclass{InsightArticle}
+
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+
+\usepackage{amsmath}
+\DeclareMathOperator{\sgn}{sgn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  hyperref should be the last package to be loaded.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[dvips,
+bookmarks,
+bookmarksopen,
+backref,
+colorlinks,linkcolor={blue},citecolor={blue},urlcolor={blue},
+]{hyperref}
+
+
+%  This is a template for Papers to the Insight Journal.
+%  It is comparable to a technical report format.
+
+% The title should be descriptive enough for people to be able to find
+% the relevant document.
+\title{An ITK Class that Splits Multi-Component Images}
+
+%
+% NOTE: This is the last number of the "handle" URL that
+% The Insight Journal assigns to your paper as part of the
+% submission process. Please replace the number "1338" with
+% the actual handle number that you get assigned.
+%
+\newcommand{\IJhandlerIDnumber}{3159}
+
+% Increment the release number whenever significant changes are made.
+% The author and/or editor can define 'significant' however they like.
+\release{1.0.0}
+
+% At minimum, give your name and an email address.  You can include a
+% snail-mail address if you like.
+%\author{Galileo Galilei$^{1}$, Giordano Bruno$^{2}$ and Anthony Leeuwenhoek$^{3}$}
+%\authoraddress{$^{1}$Pisa University, Tower drive\\
+               %$^{2}$Rome University, Inquisition street\\
+               %$^{3}$Netherlands Pragmatic University, Port street}
+\author{Matthew McCormick$^{1}$}
+\authoraddress{$^{1}$University of Wisconsin-Madison \\
+Department of Biomedical Engineering\\
+matt@mmmccormick.com}
+
+\begin{document}
+
+%
+% Add hyperlink to the web location and license of the paper.
+% The argument of this command is the handler identifier given
+% by the Insight Journal to this paper.
+%
+\IJhandlefooter{\IJhandlerIDnumber}
+
+
+\ifpdf
+\else
+   %
+   % Commands for including Graphics when using latex
+   %
+   \DeclareGraphicsExtensions{.eps,.jpg,.gif,.tiff,.bmp,.png}
+   \DeclareGraphicsRule{.jpg}{eps}{.jpg.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.gif}{eps}{.gif.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.tiff}{eps}{.tiff.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.bmp}{eps}{.bmp.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.png}{eps}{.png.bb}{`convert #1 eps:-}
+\fi
+
+
+\maketitle
+
+
+\ifhtml
+\chapter*{Front Matter\label{front}}
+\fi
+
+
+% The abstract should be a paragraph or two long, and describe the scope of the
+% document.
+\begin{abstract} \noindent This document describes the implementation of a class
+for the Insight Toolkit (ITK) that takes an image with multi-component pixels and
+outputs a scalar image for each component.  This can be useful when examining images
+of vectors, tensors, etc.  This filter may be easier to use and require fewer
+pixel visitations than an \doxygen{ImageAdaptor} with a similar purpose,
+but it requires additional memory allocation.
+\end{abstract}
+
+\IJhandlenote{\IJhandlerIDnumber}
+
+\tableofcontents
+
+\section{Introduction}
+
+Often when working with images that have pixels containing multiple components,
+it is desireable to address individual components.  Further analysis may only be
+possible on separate components or one may simply want to view the components
+individually.
+
+There are a few classes meant to address this problem in the Insight Toolkit
+(ITK).  The \doxygen{NthElementAdaptor} and \doxygen{VectorImageToImageAdaptor}
+are \doxygen{ImageAdaptor}'s.  They are useful when iterating over the image but
+only working with a single component.
+
+Here we present a filter that produces multiple output images given a
+multi-component input image.  This may be easier to work and may be more efficient
+than the adaptors when all the components of the image are desired to appear as
+scalar images.  However, additional memory consumption is required compared to
+an adaptor.  We call this class the \code{itk::SplitComponentsImageFilter}.
+
+\section{Class Overview}
+
+The \code{itk::SplitComponentsImageFilter} inherits from
+\doxygen{ImageToImageFilter}.  The filter takes a multi-component image as an
+input, and multiple output scalar images are present on the output corresponding
+to the component number.  The class extracts components of an \doxygen{Image} of
+\doxygen{Vector}'s, \doxygen{CovariantVector}'s,
+\doxygen{SymmetricSecondRankTensor}'s, or other classes that have the same
+interface.  The pixel's interface must implement \code{ValueType operator[] ( unsigned
+int )}.
+
+The class is templated over the input image type, the output image type, and the
+number of components in the input image pixels.
+
+Implementation is multi-threaded.
+
+\section{An Example}
+
+A sample executable that writes individual scalar component images from a
+multi-component input image is included with the source code.  An excerpt
+follows:
+
+\begin{verbatim}
+  typedef itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
+          TComponents > FilterType;
+  typename FilterType::Pointer filter = FilterType::New();
+  filter->SetInput( reader->GetOutput() );
+
+  typedef itk::ImageFileWriter< OutputImageType > WriterType;
+  typename WriterType::Pointer writer = WriterType::New();
+
+  std::ostringstream ostr;
+  for( unsigned int i = 0; i < TComponents; ++i )
+    {
+    ostr.str( "" );
+    ostr << args.outputPrefix << "Component" << i << ".mha";
+    writer->SetInput( filter->GetOutput( i ) );
+    writer->SetFileName( ostr.str() );
+    writer->Update();
+    }
+\end{verbatim}
+
+
+\end{document}

@@ -1,0 +1,5 @@
+/Article/*
+!/Article/*.tex
+!/Article/*.pdf
+!/Article/*.sty
+!/Article/*.cls

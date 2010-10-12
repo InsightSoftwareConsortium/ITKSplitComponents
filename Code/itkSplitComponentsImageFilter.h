@@ -13,7 +13,7 @@ namespace itk
  * This class extracts components of itk::Image of itk::Vector's
  * itk::CovariantVector, itk::SymmetricSecondRankTensor, or other classes that
  * have the same interface.  The interface must implement ValueType operator[] (
- * unsigned int ).  Therefore, it does not work itk::Matrix.
+ * unsigned int ).
  *
  * It puts an image on every output corresponding to each component.
  *
