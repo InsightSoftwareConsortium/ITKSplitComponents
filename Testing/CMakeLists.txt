@@ -1,4 +1,5 @@
 set( BASELINE_DIR ${ITK_SPLIT_COMPONENTS_SOURCE_DIR}/Testing/Data/Baseline )
+set( INPUT_DIR    ${ITK_SPLIT_COMPONENTS_SOURCE_DIR}/Testing/Data/Input )
 
 add_executable( itkSplitComponentsImageFilterTest
   itkSplitComponentsImageFilterTest.cxx
@@ -18,5 +19,12 @@ add_test( itkSplitComponentsImageFilterTest
     itkSplitComponentsImageFilterTestOutput1.mha
   itkSplitComponentsImageFilterTest
   itkSplitComponentsImageFilterTestOutput
+  )
+
+
+add_test( split_components_test
+  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/split-components
+  ${INPUT_DIR}/testrgba.nrrd
+  -o split_components_test_output_
   )
 
