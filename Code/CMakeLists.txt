@@ -1,16 +1,16 @@
-add_executable( itk-tensor-components
-  itk-tensor-components.cxx
-  TensorComponentsArgs.cxx
+add_executable( split-components
+  split-components.cxx
+  SplitComponentsArgs.cxx
   )
-target_link_libraries( itk-tensor-components
+target_link_libraries( split-components
   ITKCommon
   ITKIO
   )
-install( TARGETS itk-tensor-components
+install( TARGETS split-components
   RUNTIME DESTINATION bin )
 
 install( FILES
-  itkTensorComponentsImageFilter.h
-  itkTensorComponentsImageFilter.txx
+  itkSplitComponentsImageFilter.h
+  itkSplitComponentsImageFilter.txx
   DESTINATION include/InsightToolkit/Review
   )

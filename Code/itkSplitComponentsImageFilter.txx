@@ -1,7 +1,7 @@
-#ifndef __itkTensorComponentsImageFilter_txx
-#define __itkTensorComponentsImageFilter_txx
+#ifndef __itkSplitComponentsImageFilter_txx
+#define __itkSplitComponentsImageFilter_txx
 
-#include "itkTensorComponentsImageFilter.h"
+#include "itkSplitComponentsImageFilter.h"
 
 #include "itkImageRegionConstIterator.h"
 #include "itkImageRegionIterator.h"
@@ -11,12 +11,12 @@ namespace itk
 
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents >
-TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
-::TensorComponentsImageFilter()
+SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
+::SplitComponentsImageFilter()
 {
-  this->SetNumberOfOutputs( TensorComponents );
+  this->SetNumberOfOutputs( Components );
   // ImageSource only does this for the first output.
-  for( unsigned int i = 1; i < TensorComponents; i++ )
+  for( unsigned int i = 1; i < Components; i++ )
     {
     this->SetNthOutput( i, this->MakeOutput( i ) );
     }
@@ -25,8 +25,8 @@ TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents >
 void
-TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
-::ThreadedGenerateData( const OutputRegionType& outputRegion, 
+SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
+::ThreadedGenerateData( const OutputRegionType& outputRegion,
   int threadId )
 {
   typename InputImageType::ConstPointer input = this->GetInput();
@@ -35,11 +35,11 @@ TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 
   typedef typename itk::ImageRegionIterator< OutputImageType >
     OutputIteratorType;
-  typename itk::ImageRegionConstIterator< InputImageType > 
+  typename itk::ImageRegionConstIterator< InputImageType >
     inIt( input, outputRegion );
   typename std::vector< OutputIteratorType > outIts;
   unsigned int i;
-  for( i = 0; i < TensorComponents; i++ )
+  for( i = 0; i < Components; i++ )
     {
     OutputIteratorType outIt( dynamic_cast< OutputImageType* >
       ( outputs[i].GetPointer() ), outputRegion );
@@ -50,7 +50,7 @@ TensorComponentsImageFilter< TInputImage, TOutputImage, TComponents >
   for( inIt.GoToBegin(); ! inIt.IsAtEnd(); ++inIt )
     {
     tensor = inIt.Get();
-    for( i = 0; i < TensorComponents; i++ )
+    for( i = 0; i < Components; i++ )
       {
       outIts[i].Set( static_cast< PixelType >( tensor[i] ) );
       ++(outIts[i]);

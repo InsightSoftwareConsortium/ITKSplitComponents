@@ -2,9 +2,9 @@
 // rank tensor into its component images.
 //
 
-#include "TensorComponentsArgs.h"
+#include "SplitComponentsArgs.h"
 
-#include "itkTensorComponentsImageFilter.h"
+#include "itkSplitComponentsImageFilter.h"
 
 #include "itkImageFileReader.h"
 #include "itkImageFileWriter.h"
@@ -24,7 +24,7 @@ void ExtractComponents( const Args& args )
   typename ReaderType::Pointer reader = ReaderType::New();
   reader->SetFileName( args.inputImage );
 
-  typedef itk::TensorComponentsImageFilter< InputImageType, OutputImageType,
+  typedef itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
           TComponents > FilterType;
   typename FilterType::Pointer filter = FilterType::New();
   filter->SetInput( reader->GetOutput() );
@@ -50,7 +50,7 @@ int main( int argc, char* argv[] )
     {
     Args args( argc, argv );
 
-    itk::ImageIOBase::Pointer imageIO = 
+    itk::ImageIOBase::Pointer imageIO =
       itk::ImageIOFactory::CreateImageIO( args.inputImage.c_str(),
                                      itk::ImageIOFactory::ReadMode );
     if( !imageIO )
@@ -885,12 +885,12 @@ int main( int argc, char* argv[] )
       } // end switch on pixel type
 
     }
-  catch( itk::ExceptionObject & err ) 
-    { 
-    std::cerr << "ExceptionObject caught !" << std::endl; 
-    std::cerr << err << std::endl; 
+  catch( itk::ExceptionObject & err )
+    {
+    std::cerr << "ExceptionObject caught !" << std::endl;
+    std::cerr << err << std::endl;
     return 1;
-    } 
+    }
   catch( const Args::got_xml_flag_exception& e )
     {
     return 0;

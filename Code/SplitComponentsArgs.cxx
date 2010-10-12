@@ -1,4 +1,4 @@
-#include "TensorComponentsArgs.h"
+#include "SplitComponentsArgs.h"
 
 #include "metaCommand.h"
 

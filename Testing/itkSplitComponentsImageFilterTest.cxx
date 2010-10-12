@@ -2,7 +2,7 @@
 
 void RegisterTests()
 {
-  REGISTER_TEST( itkTensorComponentsImageFilterTest );
+  REGISTER_TEST( itkSplitComponentsImageFilterTest );
 }
 
 #include "itkImage.h"
@@ -11,9 +11,9 @@ void RegisterTests()
 
 #include <sstream>
 
-#include "itkTensorComponentsImageFilter.h"
+#include "itkSplitComponentsImageFilter.h"
 
-int itkTensorComponentsImageFilterTest( int argc, char* argv[] )
+int itkSplitComponentsImageFilterTest( int argc, char* argv[] )
 {
   if( argc < 2 )
     {
@@ -33,7 +33,7 @@ int itkTensorComponentsImageFilterTest( int argc, char* argv[] )
   const unsigned int sizes = 100;
 
   InputImageType::Pointer input = InputImageType::New();
-  
+
   typedef InputImageType::RegionType RegionType;
   RegionType region;
   RegionType::IndexType index;
@@ -59,7 +59,7 @@ int itkTensorComponentsImageFilterTest( int argc, char* argv[] )
     it.Set( vector );
     }
 
-  typedef itk::TensorComponentsImageFilter< InputImageType, OutputImageType,
+  typedef itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
           Dimension >
     FilterType;
   FilterType::Pointer filter = FilterType::New();

@@ -1,15 +1,14 @@
-#ifndef __itkTensorComponentsImageFilter_h
-#define __itkTensorComponentsImageFilter_h
+#ifndef __itkSplitComponentsImageFilter_h
+#define __itkSplitComponentsImageFilter_h
 
 #include "itkImageToImageFilter.h"
 
 namespace itk
 {
 
-/** \class TensorComponentsImageFilter
+/** \class SplitComponentsImageFilter
  *
- * \brief Extract components of an Image of tensors.  Tensor is used in the
- * general sense -- including first rank tensors (vectors).
+ * \brief Extract components of an Image with multi-component pixels.
  *
  * This class extracts components of itk::Image of itk::Vector's
  * itk::CovariantVector, itk::SymmetricSecondRankTensor, or other classes that
@@ -27,15 +26,15 @@ namespace itk
  */
 template< class TInputImage, class TOutputImage,
   unsigned int TComponents = TInputImage::ImageDimension >
-class ITK_EXPORT TensorComponentsImageFilter :
+class ITK_EXPORT SplitComponentsImageFilter :
   public ImageToImageFilter< TInputImage, TOutputImage >
 {
 public:
   /** ImageDimension enumeration. */
   itkStaticConstMacro(ImageDimension, unsigned int,
                       TInputImage::ImageDimension);
-  /** TensorComponents enumeration. */
-  itkStaticConstMacro(TensorComponents, unsigned int,
+  /** Components enumeration. */
+  itkStaticConstMacro(Components, unsigned int,
                       TComponents);
 
   /** Image types. */
@@ -46,13 +45,13 @@ public:
   typedef typename OutputImageType::RegionType        OutputRegionType;
 
   /** Standard class typedefs. */
-  typedef TensorComponentsImageFilter	  Self;
+  typedef SplitComponentsImageFilter	  Self;
   typedef ImageToImageFilter< InputImageType, OutputImageType > Superclass;
   typedef SmartPointer< Self >       Pointer;
   typedef SmartPointer< const Self > ConstPointer;
-  
+
   /** Run-time type information (and related methods). */
-  itkTypeMacro(TensorComponentsImageFilter, ImageToImageFilter);
+  itkTypeMacro(SplitComponentsImageFilter, ImageToImageFilter);
 
   /** Provide ::New() */
   itkNewMacro( Self );
@@ -61,21 +60,21 @@ public:
   typedef itk::ProcessObject::DataObjectPointerArray  DataObjectPointerArray;
 
 protected:
-  TensorComponentsImageFilter();
-  virtual ~TensorComponentsImageFilter() {};
+  SplitComponentsImageFilter();
+  virtual ~SplitComponentsImageFilter() {};
 
   virtual void ThreadedGenerateData( const OutputRegionType& outputRegion,
     int threadId );
 
 private:
-  TensorComponentsImageFilter( const Self& ); // purposely not implemented
+  SplitComponentsImageFilter( const Self& ); // purposely not implemented
   void operator=( const Self& ); // purposely not implemented
 };
 
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkTensorComponentsImageFilter.txx"
+#include "itkSplitComponentsImageFilter.txx"
 #endif
 
 #endif

@@ -5,7 +5,7 @@
 
 #include <stdexcept>
 
-/** 
+/**
  * @brief hold the results of command line argument parsing.
  */
 struct Args
