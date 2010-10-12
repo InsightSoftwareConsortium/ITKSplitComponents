@@ -1,15 +1,13 @@
-add_executable( tensor-components
-  tensor-components.cxx
+add_executable( itk-tensor-components
+  itk-tensor-components.cxx
   TensorComponentsArgs.cxx
   )
-target_link_libraries( tensor-components
+target_link_libraries( itk-tensor-components
   ITKCommon
   ITKIO
   )
-install( TARGETS tensor-components
-  RUNTIME
-  DESTINATION bin
-  )
+install( TARGETS itk-tensor-components
+  RUNTIME DESTINATION bin )
 
 install( FILES
   itkTensorComponentsImageFilter.h
