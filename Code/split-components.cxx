@@ -61,8 +61,8 @@ int main( int argc, char* argv[] )
     imageIO->ReadImageInformation();
 
     // Find out the pixel type of the image in file
-    typedef itk::ImageIOBase::IOComponentType  ScalarPixelType;
-    ScalarPixelType pixelType = imageIO->GetComponentType();
+    typedef itk::ImageIOBase::IOComponentType  ScalarComponentType;
+    ScalarComponentType componentType = imageIO->GetComponentType();
 
     const unsigned int dimension = imageIO->GetNumberOfDimensions();
     if( ! ( dimension == 2 || dimension == 3 ) )
@@ -74,728 +74,747 @@ int main( int argc, char* argv[] )
 
     // So in hindsight using VectorImageToImageAdaptor would have been more
     // elegant for this case.
-    switch( pixelType )
+    switch( componentType )
       {
-    //case itk::ImageIOBase::UCHAR:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned char, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned char, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned char, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned char, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned char, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned char, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned char, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned char, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned char, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned char, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned char, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned char, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::CHAR:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< char, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< char, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< char, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< char, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< char, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< char, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< char, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< char, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< char, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< char, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< char, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< char, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::USHORT:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned short, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned short, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned short, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned short, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned short, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned short, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned short, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned short, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned short, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned short, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned short, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned short, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::SHORT:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< short, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< short, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< short, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< short, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< short, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< short, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< short, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< short, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< short, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< short, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< short, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< short, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::UINT:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned int, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned int, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned int, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned int, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned int, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned int, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned int, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned int, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned int, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned int, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned int, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned int, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::INT:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< int, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< int, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< int, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< int, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< int, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< int, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< int, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< int, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< int, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< int, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< int, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< int, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::ULONG:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned long, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned long, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned long, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned long, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned long, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned long, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< unsigned long, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< unsigned long, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< unsigned long, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< unsigned long, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< unsigned long, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< unsigned long, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::LONG:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< long, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< long, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< long, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< long, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< long, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< long, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< long, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< long, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< long, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< long, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< long, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< long, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
-    //case itk::ImageIOBase::FLOAT:
-        //{
-        //if( dimension == 2 )
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< float, 2, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< float, 2, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< float, 2, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< float, 2, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< float, 2, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< float, 2, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //else
-          //{
-          //switch( components )
-            //{
-          //case 1:
-              //{
-              //ExtractComponents< float, 3, 1 >( args );
-              //break;
-              //}
-          //case 2:
-              //{
-              //ExtractComponents< float, 3, 2 >( args );
-              //break;
-              //}
-          //case 3:
-              //{
-              //ExtractComponents< float, 3, 3 >( args );
-              //break;
-              //}
-          //case 4:
-              //{
-              //ExtractComponents< float, 3, 4 >( args );
-              //break;
-              //}
-          //case 5:
-              //{
-              //ExtractComponents< float, 3, 5 >( args );
-              //break;
-              //}
-          //case 6:
-              //{
-              //ExtractComponents< float, 3, 6 >( args );
-              //break;
-              //}
-          //default:
-            //throw std::logic_error( "Only 1-6 components supported." );
-            //}
-          //}
-        //break;
-        //}
+#ifdef USE_UCHAR
+    case itk::ImageIOBase::UCHAR:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned char, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned char, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned char, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned char, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned char, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned char, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned char, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned char, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned char, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned char, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned char, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned char, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_UCHAR
+#ifdef USE_CHAR
+    case itk::ImageIOBase::CHAR:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< char, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< char, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< char, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< char, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< char, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< char, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< char, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< char, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< char, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< char, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< char, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< char, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_CHAR
+#ifdef USE_USHORT
+    case itk::ImageIOBase::USHORT:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned short, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned short, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned short, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned short, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned short, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned short, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned short, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned short, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned short, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned short, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned short, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned short, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_USHORT
+#ifdef USE_SHORT
+    case itk::ImageIOBase::SHORT:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< short, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< short, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< short, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< short, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< short, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< short, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< short, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< short, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< short, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< short, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< short, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< short, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_SHORT
+#ifdef USE_UINT
+    case itk::ImageIOBase::UINT:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned int, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned int, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned int, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned int, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned int, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned int, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned int, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned int, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned int, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned int, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned int, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned int, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_UINT
+#ifdef USE_INT
+    case itk::ImageIOBase::INT:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< int, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< int, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< int, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< int, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< int, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< int, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< int, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< int, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< int, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< int, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< int, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< int, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_INT
+#ifdef USE_ULONG
+    case itk::ImageIOBase::ULONG:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned long, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned long, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned long, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned long, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned long, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned long, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< unsigned long, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< unsigned long, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< unsigned long, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< unsigned long, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< unsigned long, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< unsigned long, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_ULONG
+#ifdef USE_LONG
+    case itk::ImageIOBase::LONG:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< long, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< long, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< long, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< long, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< long, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< long, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< long, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< long, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< long, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< long, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< long, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< long, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_LONG
+#ifdef USE_FLOAT
+    case itk::ImageIOBase::FLOAT:
+        {
+        if( dimension == 2 )
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< float, 2, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< float, 2, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< float, 2, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< float, 2, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< float, 2, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< float, 2, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        else
+          {
+          switch( components )
+            {
+          case 1:
+              {
+              ExtractComponents< float, 3, 1 >( args );
+              break;
+              }
+          case 2:
+              {
+              ExtractComponents< float, 3, 2 >( args );
+              break;
+              }
+          case 3:
+              {
+              ExtractComponents< float, 3, 3 >( args );
+              break;
+              }
+          case 4:
+              {
+              ExtractComponents< float, 3, 4 >( args );
+              break;
+              }
+          case 5:
+              {
+              ExtractComponents< float, 3, 5 >( args );
+              break;
+              }
+          case 6:
+              {
+              ExtractComponents< float, 3, 6 >( args );
+              break;
+              }
+          default:
+            throw std::logic_error( "Only 1-6 components supported." );
+            }
+          }
+        break;
+        }
+#endif // USE_FLOAT
+#ifdef USE_DOUBLE
     case itk::ImageIOBase::DOUBLE:
         {
         if( dimension == 2 )
@@ -876,6 +895,7 @@ int main( int argc, char* argv[] )
           }
         break;
         }
+#endif // USE_DOUBLE
     default:
         {
         itk::ExceptionObject ex;
