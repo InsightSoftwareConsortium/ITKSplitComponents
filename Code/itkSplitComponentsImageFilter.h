@@ -25,8 +25,8 @@ namespace itk
  * \sa NthElementImageAdaptor
  */
 template< class TInputImage, class TOutputImage,
-  unsigned int TComponents = TInputImage::ImageDimension >
-class ITK_EXPORT SplitComponentsImageFilter :
+          unsigned int TComponents = TInputImage::ImageDimension >
+class ITK_EXPORT SplitComponentsImageFilter:
   public ImageToImageFilter< TInputImage, TOutputImage >
 {
 public:
@@ -38,17 +38,17 @@ public:
                       TComponents);
 
   /** Image types. */
-  typedef TInputImage                                 InputImageType;
-  typedef TOutputImage                                OutputImageType;
-  typedef typename InputImageType::PixelType          TensorType;
-  typedef typename OutputImageType::PixelType         PixelType;
-  typedef typename OutputImageType::RegionType        OutputRegionType;
+  typedef TInputImage                          InputImageType;
+  typedef TOutputImage                         OutputImageType;
+  typedef typename InputImageType::PixelType   InputPixelType;
+  typedef typename OutputImageType::PixelType  OutputPixelType;
+  typedef typename OutputImageType::RegionType OutputRegionType;
 
   /** Standard class typedefs. */
-  typedef SplitComponentsImageFilter	  Self;
+  typedef SplitComponentsImageFilter                            Self;
   typedef ImageToImageFilter< InputImageType, OutputImageType > Superclass;
-  typedef SmartPointer< Self >       Pointer;
-  typedef SmartPointer< const Self > ConstPointer;
+  typedef SmartPointer< Self >                                  Pointer;
+  typedef SmartPointer< const Self >                            ConstPointer;
 
   /** Run-time type information (and related methods). */
   itkTypeMacro(SplitComponentsImageFilter, ImageToImageFilter);
@@ -61,7 +61,7 @@ public:
 
 protected:
   SplitComponentsImageFilter();
-  virtual ~SplitComponentsImageFilter() {};
+  virtual ~SplitComponentsImageFilter() {}
 
   virtual void ThreadedGenerateData( const OutputRegionType& outputRegion,
     int threadId );

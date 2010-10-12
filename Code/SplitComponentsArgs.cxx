@@ -5,7 +5,8 @@
 Args::Args( int argc, char* argv[] )
 {
   MetaCommand command;
-  command.SetDescription( "Convert an itk::Image of vectors, covariant vectors,\
+  command.SetDescription(
+    "Convert an itk::Image of vectors, covariant vectors,\
  or symmetric second rank tensors into its components." );
   command.SetAuthor( "Matthew McCormick" );
 
@@ -31,11 +32,13 @@ Args::Args( int argc, char* argv[] )
     {
     // truncate the input extension
     std::string fileBase = this->inputImage;
-    size_t fileBaseLength = fileBase.length();
-    if( fileBaseLength > 4 )
+    size_t      fileBaseLength = fileBase.length();
+    if ( fileBaseLength > 4 )
       {
-      if( !this->inputImage.compare( fileBaseLength - 4, 1, "." ) )
-	fileBase = fileBase.substr(0, fileBaseLength - 4);
+      if ( !this->inputImage.compare(fileBaseLength - 4, 1, ".") )
+        {
+        fileBase = fileBase.substr(0, fileBaseLength - 4);
+        }
       }
     this->outputPrefix = fileBase;
     }

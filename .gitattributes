@@ -1,0 +1,7 @@
+*.h      hooks.style
+*.txx    hooks.style
+*.cxx    hooks.style
+
+# Want namespace defined.
+/Code/split-components.cxx hooks.style=uncrustify
+/Code/SplitComponentsArgs.h hooks.style=uncrustify

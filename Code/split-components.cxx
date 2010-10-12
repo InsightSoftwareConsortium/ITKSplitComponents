@@ -4,6 +4,7 @@
 
 #include "SplitComponentsArgs.h"
 
+
 #include "itkSplitComponentsImageFilter.h"
 
 #include "itkImageFileReader.h"
@@ -16,9 +17,9 @@
 template< class TPixel, unsigned int TDimension, unsigned int TComponents >
 void ExtractComponents( const Args& args )
 {
-  typedef itk::Vector< TPixel, TComponents > VectorType;
+  typedef itk::Vector< TPixel, TComponents >   VectorType;
   typedef itk::Image< VectorType, TDimension > InputImageType;
-  typedef itk::Image< TPixel, TDimension > OutputImageType;
+  typedef itk::Image< TPixel, TDimension >     OutputImageType;
 
   typedef itk::ImageFileReader< InputImageType > ReaderType;
   typename ReaderType::Pointer reader = ReaderType::New();
@@ -53,7 +54,7 @@ int main( int argc, char* argv[] )
     itk::ImageIOBase::Pointer imageIO =
       itk::ImageIOFactory::CreateImageIO( args.inputImage.c_str(),
                                      itk::ImageIOFactory::ReadMode );
-    if( !imageIO )
+    if ( !imageIO )
       {
       throw std::runtime_error( std::string( "No ImageIO found for " ) + args.inputImage );
       }
@@ -65,7 +66,7 @@ int main( int argc, char* argv[] )
     ScalarComponentType componentType = imageIO->GetComponentType();
 
     const unsigned int dimension = imageIO->GetNumberOfDimensions();
-    if( ! ( dimension == 2 || dimension == 3 ) )
+    if( !( dimension == 2 || dimension == 3 ) )
       {
       std::logic_error( "Only images of dimension 2 and 3 are supported." );
       }
@@ -905,17 +906,17 @@ int main( int argc, char* argv[] )
       } // end switch on pixel type
 
     }
-  catch( itk::ExceptionObject & err )
+  catch ( itk::ExceptionObject & err )
     {
     std::cerr << "ExceptionObject caught !" << std::endl;
     std::cerr << err << std::endl;
     return 1;
     }
-  catch( const Args::got_xml_flag_exception& e )
+  catch ( const Args::got_xml_flag_exception& e )
     {
     return 0;
     }
-  catch( const std::exception& e )
+  catch ( const std::exception& e )
     {
     std::cerr << "Error: " << e.what() << std::endl;
     return 1;
@@ -923,4 +924,3 @@ int main( int argc, char* argv[] )
 
   return 0;
 }
-

@@ -1,8 +1,7 @@
-#ifndef ARGS_H
-#define ARGS_H
+#ifndef __SplitComponentsArgs_h
+#define __SplitComponentsArgs_h
 
 #include <string>
-
 #include <stdexcept>
 
 /**
@@ -24,5 +23,3 @@ struct Args
 };
 
 #endif
-
-

@@ -9,6 +9,7 @@ void RegisterTests()
 #include "itkImageFileWriter.h"
 #include "itkVector.h"
 
+// aoeusth
 #include <sstream>
 
 #include "itkSplitComponentsImageFilter.h"
@@ -24,7 +25,7 @@ int itkSplitComponentsImageFilterTest( int argc, char* argv[] )
     }
 
   const unsigned int Dimension = 2;
-  typedef signed short PixelType;
+  typedef signed short                         PixelType;
   typedef itk::Image<  PixelType, Dimension >  OutputImageType;
   typedef itk::Vector< PixelType, Dimension >  VectorType;
   typedef itk::Image<  VectorType, Dimension > InputImageType;

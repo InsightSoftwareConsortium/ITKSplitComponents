@@ -10,20 +10,20 @@ namespace itk
 {
 
 template< class TInputImage, class TOutputImage,
-  unsigned int TComponents >
+          unsigned int TComponents >
 SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::SplitComponentsImageFilter()
 {
   this->SetNumberOfOutputs( Components );
   // ImageSource only does this for the first output.
-  for( unsigned int i = 1; i < Components; i++ )
+  for ( unsigned int i = 1; i < Components; i++ )
     {
     this->SetNthOutput( i, this->MakeOutput( i ) );
     }
 }
 
 template< class TInputImage, class TOutputImage,
-  unsigned int TComponents >
+          unsigned int TComponents >
 void
 SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::ThreadedGenerateData( const OutputRegionType& outputRegion,
@@ -39,20 +39,20 @@ SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
     inIt( input, outputRegion );
   typename std::vector< OutputIteratorType > outIts;
   unsigned int i;
-  for( i = 0; i < Components; i++ )
+  for ( i = 0; i < Components; i++ )
     {
     OutputIteratorType outIt( dynamic_cast< OutputImageType* >
       ( outputs[i].GetPointer() ), outputRegion );
     outIt.GoToBegin();
     outIts.push_back( outIt );
     }
-  TensorType tensor;
-  for( inIt.GoToBegin(); ! inIt.IsAtEnd(); ++inIt )
+  InputPixelType inputPixel;
+  for ( inIt.GoToBegin(); !inIt.IsAtEnd(); ++inIt )
     {
-    tensor = inIt.Get();
-    for( i = 0; i < Components; i++ )
+    inputPixel = inIt.Get();
+    for ( i = 0; i < Components; i++ )
       {
-      outIts[i].Set( static_cast< PixelType >( tensor[i] ) );
+      outIts[i].Set( static_cast< OutputPixelType >( inputPixel[i] ) );
       ++(outIts[i]);
       }
     }
