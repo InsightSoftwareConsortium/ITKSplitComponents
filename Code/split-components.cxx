@@ -32,6 +32,7 @@ void ExtractComponents( const Args& args )
 
   typedef itk::ImageFileWriter< OutputImageType > WriterType;
   typename WriterType::Pointer writer = WriterType::New();
+  writer->SetNumberOfStreamDivisions( 10 );
 
   std::ostringstream ostr;
   for( unsigned int i = 0; i < TComponents; ++i )
