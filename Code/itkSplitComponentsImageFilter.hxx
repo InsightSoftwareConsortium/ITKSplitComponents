@@ -1,5 +1,5 @@
-#ifndef __itkSplitComponentsImageFilter_txx
-#define __itkSplitComponentsImageFilter_txx
+#ifndef __itkSplitComponentsImageFilter_hxx
+#define __itkSplitComponentsImageFilter_hxx
 
 #include "itkSplitComponentsImageFilter.h"
 

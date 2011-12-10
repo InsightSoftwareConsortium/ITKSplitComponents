@@ -74,7 +74,7 @@ private:
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkSplitComponentsImageFilter.txx"
+#include "itkSplitComponentsImageFilter.hxx"
 #endif
 
 #endif
