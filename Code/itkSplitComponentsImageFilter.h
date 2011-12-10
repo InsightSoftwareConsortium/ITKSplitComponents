@@ -72,9 +72,6 @@ public:
   /** Provide ::New() */
   itkNewMacro( Self );
 
-  /** Type of the outputs. */
-  typedef itk::ProcessObject::DataObjectPointerArray  DataObjectPointerArray;
-
 protected:
   SplitComponentsImageFilter();
   virtual ~SplitComponentsImageFilter() {}

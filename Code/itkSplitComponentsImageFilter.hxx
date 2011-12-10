@@ -46,11 +46,11 @@ SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 {
   typename InputImageType::ConstPointer input = this->GetInput();
 
-  DataObjectPointerArray outputs = this->GetOutputs();
+  ProcessObject::DataObjectPointerArray outputs = this->GetOutputs();
 
-  typedef typename itk::ImageRegionIterator< OutputImageType > OutputIteratorType;
-  typename itk::ImageRegionConstIterator< InputImageType > inIt( input, outputRegion );
-  typename std::vector< OutputIteratorType > outIts;
+  typedef ImageRegionIterator< OutputImageType > OutputIteratorType;
+  ImageRegionConstIterator< InputImageType > inIt( input, outputRegion );
+  std::vector< OutputIteratorType > outIts;
   unsigned int i;
   for ( i = 0; i < Components; i++ )
     {
