@@ -26,12 +26,12 @@
 namespace itk
 {
 
-template< class TInputImage, class TOutputImage,
-          unsigned int TComponents >
+template< class TInputImage, class TOutputImage, unsigned int TComponents >
 SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::SplitComponentsImageFilter()
 {
   this->SetNumberOfOutputs( Components );
+
   // ImageSource only does this for the first output.
   for ( unsigned int i = 1; i < Components; i++ )
     {
@@ -39,21 +39,17 @@ SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
     }
 }
 
-template< class TInputImage, class TOutputImage,
-          unsigned int TComponents >
+template< class TInputImage, class TOutputImage, unsigned int TComponents >
 void
 SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
-::ThreadedGenerateData( const OutputRegionType& outputRegion,
-  int threadId )
+::ThreadedGenerateData( const OutputRegionType& outputRegion, int threadId )
 {
   typename InputImageType::ConstPointer input = this->GetInput();
 
   DataObjectPointerArray outputs = this->GetOutputs();
 
-  typedef typename itk::ImageRegionIterator< OutputImageType >
-    OutputIteratorType;
-  typename itk::ImageRegionConstIterator< InputImageType >
-    inIt( input, outputRegion );
+  typedef typename itk::ImageRegionIterator< OutputImageType > OutputIteratorType;
+  typename itk::ImageRegionConstIterator< InputImageType > inIt( input, outputRegion );
   typename std::vector< OutputIteratorType > outIts;
   unsigned int i;
   for ( i = 0; i < Components; i++ )

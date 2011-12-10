@@ -41,8 +41,7 @@ namespace itk
  * \sa DiffusionTensor3D
  * \sa NthElementImageAdaptor
  */
-template< class TInputImage, class TOutputImage,
-          unsigned int TComponents = TInputImage::ImageDimension >
+template< class TInputImage, class TOutputImage, unsigned int TComponents = TInputImage::ImageDimension >
 class ITK_EXPORT SplitComponentsImageFilter:
   public ImageToImageFilter< TInputImage, TOutputImage >
 {
@@ -68,7 +67,7 @@ public:
   typedef SmartPointer< const Self >                            ConstPointer;
 
   /** Run-time type information (and related methods). */
-  itkTypeMacro(SplitComponentsImageFilter, ImageToImageFilter);
+  itkTypeMacro( SplitComponentsImageFilter, ImageToImageFilter );
 
   /** Provide ::New() */
   itkNewMacro( Self );
@@ -80,8 +79,7 @@ protected:
   SplitComponentsImageFilter();
   virtual ~SplitComponentsImageFilter() {}
 
-  virtual void ThreadedGenerateData( const OutputRegionType& outputRegion,
-    int threadId );
+  virtual void ThreadedGenerateData( const OutputRegionType& outputRegion, int threadId );
 
 private:
   SplitComponentsImageFilter( const Self& ); // purposely not implemented
