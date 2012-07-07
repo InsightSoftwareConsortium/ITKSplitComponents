@@ -30,7 +30,7 @@ template< class TInputImage, class TOutputImage, unsigned int TComponents >
 SplitComponentsImageFilter< TInputImage, TOutputImage, TComponents >
 ::SplitComponentsImageFilter()
 {
-  this->SetNumberOfOutputs( Components );
+  this->SetNumberOfIndexedOutputs( Components );
 
   // ImageSource only does this for the first output.
   for ( unsigned int i = 1; i < Components; i++ )
