@@ -5,8 +5,7 @@ add_executable( itkSplitComponentsImageFilterTest
   itkSplitComponentsImageFilterTest.cxx
   )
 target_link_libraries( itkSplitComponentsImageFilterTest
-  ITKCommon
-  ITKIO
+  ${ITK_LIBRARIES}
   )
 
 add_test( itkSplitComponentsImageFilterTest

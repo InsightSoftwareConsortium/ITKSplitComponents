@@ -24,8 +24,7 @@ add_executable( split-components
   SplitComponentsArgs.cxx
   )
 target_link_libraries( split-components
-  ITKCommon
-  ITKIO
+  ${ITK_LIBRARIES}
   )
 install( TARGETS split-components
   RUNTIME DESTINATION bin )
