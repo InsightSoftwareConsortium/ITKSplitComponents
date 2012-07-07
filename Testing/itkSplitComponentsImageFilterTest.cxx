@@ -9,7 +9,6 @@ void RegisterTests()
 #include "itkImageFileWriter.h"
 #include "itkVector.h"
 
-// aoeusth
 #include <sstream>
 
 #include "itkSplitComponentsImageFilter.h"
