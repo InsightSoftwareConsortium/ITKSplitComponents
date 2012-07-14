@@ -1,3 +1,16 @@
+cmake_minimum_required( VERSION 2.8 )
+cmake_policy( VERSION 2.8 )
+
+project( itk-split-components )
+
+find_package( ITK REQUIRED
+  ITKSplitComponents
+  ITKIOImageBase
+  ITKIOMeta
+  ITKIONRRD
+  )
+include( ${ITK_USE_FILE} )
+
 macro( USE_COMPONENT_TYPE type default_value )
   set( USE_${type} ${default_value}
     CACHE BOOL
@@ -19,6 +32,7 @@ USE_COMPONENT_TYPE( LONG OFF )
 USE_COMPONENT_TYPE( FLOAT ON )
 USE_COMPONENT_TYPE( DOUBLE ON )
 
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
 add_executable( split-components
   split-components.cxx
   SplitComponentsArgs.cxx
@@ -27,10 +41,12 @@ target_link_libraries( split-components
   ${ITK_LIBRARIES}
   )
 install( TARGETS split-components
-  RUNTIME DESTINATION bin )
+  RUNTIME DESTINATION bin
+  )
 
-install( FILES
-  itkSplitComponentsImageFilter.h
-  itkSplitComponentsImageFilter.txx
-  DESTINATION include/InsightToolkit/Review
+enable_testing()
+add_test( split-componentsTest
+  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/split-components
+  ${CMAKE_CURRENT_SOURCE_DIR}/testrgba.nrrd
+  -o split_components_test_output_
   )

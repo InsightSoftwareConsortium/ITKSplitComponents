@@ -34,6 +34,8 @@ namespace itk
  *
  * It puts an image on every output corresponding to each component.
  *
+ * \ingroup ITKSplitComponents
+ *
  * \sa VectorImageToImageAdaptor
  * \sa Vector
  * \sa CovariantVector
@@ -76,7 +78,7 @@ protected:
   SplitComponentsImageFilter();
   virtual ~SplitComponentsImageFilter() {}
 
-  virtual void ThreadedGenerateData( const OutputRegionType& outputRegion, int threadId );
+  virtual void ThreadedGenerateData( const OutputRegionType& outputRegion, ThreadIdType threadId );
 
 private:
   SplitComponentsImageFilter( const Self& ); // purposely not implemented
