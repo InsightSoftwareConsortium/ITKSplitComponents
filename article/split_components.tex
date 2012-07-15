@@ -135,7 +135,8 @@ int )}.
 The class is templated over the input image type, the output image type, and the
 number of components in the input image pixels.
 
-Implementation is multi-threaded.
+Implementation is multi-threaded.  A subset of the outputs can be allocated and
+populated with the \code{SetComponentMask} method.
 
 \section{An Example}
 
