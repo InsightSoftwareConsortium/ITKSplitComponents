@@ -4,7 +4,8 @@ cmake_policy( VERSION 2.8 )
 project( itk-split-components )
 
 find_package( ITK REQUIRED
-  ITKSplitComponents
+  COMPONENTS
+  SplitComponents
   ITKIOImageBase
   ITKIOMeta
   ITKIONRRD
