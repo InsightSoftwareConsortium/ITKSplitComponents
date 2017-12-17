@@ -85,12 +85,12 @@ public:
 
 protected:
   SplitComponentsImageFilter();
-  ~SplitComponentsImageFilter() override {}
+  ~SplitComponentsImageFilter() ITK_OVERRIDE {}
 
   /** Do not allocate outputs that we will not populate. */
-  void AllocateOutputs() override;
+  void AllocateOutputs() ITK_OVERRIDE;
 
-  void ThreadedGenerateData( const OutputRegionType& outputRegion, ThreadIdType threadId ) override;
+  void ThreadedGenerateData( const OutputRegionType& outputRegion, ThreadIdType threadId ) ITK_OVERRIDE;
 
 private:
   ITK_DISALLOW_COPY_AND_ASSIGN(SplitComponentsImageFilter);
