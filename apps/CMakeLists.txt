@@ -20,7 +20,7 @@ macro( USE_COMPONENT_TYPE type default_value )
   if( ${USE_${type}} )
     add_definitions( -DUSE_${type} )
   endif()
-endmacro( USE_COMPONENT_TYPE )
+endmacro()
 
 USE_COMPONENT_TYPE( UCHAR ON )
 USE_COMPONENT_TYPE( CHAR OFF )
