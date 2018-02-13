@@ -145,12 +145,12 @@ multi-component input image is included with the source code.  An excerpt
 follows:
 
 \begin{verbatim}
-  typedef itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
-          TComponents > FilterType;
+  using FilterType = itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
+          TComponents >;
   typename FilterType::Pointer filter = FilterType::New();
   filter->SetInput( reader->GetOutput() );
 
-  typedef itk::ImageFileWriter< OutputImageType > WriterType;
+  using WriterType = itk::ImageFileWriter< OutputImageType >;
   typename WriterType::Pointer writer = WriterType::New();
 
   std::ostringstream ostr;

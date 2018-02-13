@@ -17,20 +17,20 @@
 template< class TPixel, unsigned int TDimension, unsigned int TComponents >
 void ExtractComponents( const Args& args )
 {
-  typedef itk::Vector< TPixel, TComponents >   VectorType;
-  typedef itk::Image< VectorType, TDimension > InputImageType;
-  typedef itk::Image< TPixel, TDimension >     OutputImageType;
+  using VectorType = itk::Vector< TPixel, TComponents >;
+  using InputImageType = itk::Image< VectorType, TDimension >;
+  using OutputImageType = itk::Image< TPixel, TDimension >;
 
-  typedef itk::ImageFileReader< InputImageType > ReaderType;
+  using ReaderType = itk::ImageFileReader< InputImageType >;
   typename ReaderType::Pointer reader = ReaderType::New();
   reader->SetFileName( args.inputImage );
 
-  typedef itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
-          TComponents > FilterType;
+  using FilterType = itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
+          TComponents >;
   typename FilterType::Pointer filter = FilterType::New();
   filter->SetInput( reader->GetOutput() );
 
-  typedef itk::ImageFileWriter< OutputImageType > WriterType;
+  using WriterType = itk::ImageFileWriter< OutputImageType >;
   typename WriterType::Pointer writer = WriterType::New();
   writer->SetNumberOfStreamDivisions( 10 );
 
@@ -63,7 +63,7 @@ int main( int argc, char* argv[] )
     imageIO->ReadImageInformation();
 
     // Find out the pixel type of the image in file
-    typedef itk::ImageIOBase::IOComponentType  ScalarComponentType;
+    using ScalarComponentType = itk::ImageIOBase::IOComponentType;
     ScalarComponentType componentType = imageIO->GetComponentType();
 
     const unsigned int dimension = imageIO->GetNumberOfDimensions();
