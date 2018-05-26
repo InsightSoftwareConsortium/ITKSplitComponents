@@ -90,7 +90,7 @@ protected:
   /** Do not allocate outputs that we will not populate. */
   void AllocateOutputs() override;
 
-  void ThreadedGenerateData( const OutputRegionType& outputRegion, ThreadIdType threadId ) override;
+  void DynamicThreadedGenerateData( const OutputRegionType& outputRegion ) override;
 
 private:
   ComponentsMaskType m_ComponentsMask;
