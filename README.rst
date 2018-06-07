@@ -1,6 +1,21 @@
 ITKSplitComponents
 ==================
 
+.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKSplitComponents.svg?style=shield
+    :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKSplitComponents
+
+.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKSplitComponents.svg?branch=master
+    :target: https://travis-ci.org/InsightSoftwareConsortium/ITKSplitComponents
+
+.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itksplitcomponents.svg
+    :target: https://ci.appveyor.com/project/itkrobot/itksplitcomponents
+
+=========== =========== ===========
+   Linux      macOS       Windows
+=========== =========== ===========
+|CircleCI|  |TravisCI|  |AppVeyor|
+=========== =========== ===========
+
 Description
 -----------
 
