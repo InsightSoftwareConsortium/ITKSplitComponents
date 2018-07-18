@@ -19,7 +19,7 @@ ITKSplitComponents
 Description
 -----------
 
-This module contains filter called
+This ITK module contains filter called
 itk::SplitComponentsImageFilter.  This filter generates component images from an
 itk::Image of, for example, itk::Vector, itk::CovariantVector, or
 itk::SymmetricSecondRankTensor.tk::SymmetricSecondRankTensor.
@@ -29,11 +29,24 @@ For more information, see the Insight Journal article at::
   http://hdl.handle.net/10380/3230
 
 
-Build
------
+Installation
+------------
 
-This is an ITKv4 Module.  To build the module, clone the repository into the
-directory *Modules/External* of the ITK source tree.  Also, set the CMake
-configuration variable, *ExternalData_URL_TEMPLATES* to::
+This module is available in the ITK source tree as a Remote module. To enable it, set::
 
-  http://c389985.r85.cf1.rackcdn.com/%(algo)/%(hash)
+  Module_SplitComponents:BOOL=ON
+
+in ITK's CMake build configuration.
+
+Alternatively, build the module externally with::
+
+  git clone https://github.com/InsightSoftwareConsortium/ITKSplitComponents.git
+  mkdir ITKSplitComponents-build
+  cd ITKSplitComponents-build
+  cmake -DITK_DIR=/path/to/ITK-build ../ITKSplitComponents
+  make
+
+License
+-------
+
+The source code is distributed under the Apache 2.0 License. Please see LICENSE file for details.
