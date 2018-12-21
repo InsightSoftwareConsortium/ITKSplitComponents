@@ -20,12 +20,12 @@ setup(
     package_dir={'itk': 'itk'},
     download_url=r'https://github.com/InsightSoftwareConsortium/ITKSplitComponents',
     description=r'ITK filters to split a multi-component pixel image into component-wise scalar images',
-    long_description='ITKSplitComponents provides a class that takes an image'
-                     'with multi-component pixels and outputs a scalar image'
-                     'for each component. This can be useful when examining'
-                     'images of vectors, tensors, et.\n'
+    long_description='itk-splitcomponents provides a class that takes an image '
+                     'with multi-component pixels and outputs a scalar image '
+                     'for each component. This can be useful when examining '
+                     'images of vectors, tensors, etc.\n'
                      'Please refer to:\n'
-                     'M. McCormick, “An ITK Class that Splits Multi-Component Images.”,'
+                     'M. McCormick, "An ITK Class that Splits Multi-Component Images.", '
                      'Insight Journal, July-December 2010, http://hdl.handle.net/10380/3230',
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
