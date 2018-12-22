@@ -16,17 +16,21 @@ ITKSplitComponents
 |CircleCI|  |TravisCI|  |AppVeyor|
 =========== =========== ===========
 
-Description
------------
+Overview
+--------
 
-This ITK module contains filter called
-itk::SplitComponentsImageFilter.  This filter generates component images from an
-itk::Image of, for example, itk::Vector, itk::CovariantVector, or
-itk::SymmetricSecondRankTensor.tk::SymmetricSecondRankTensor.
+This ITK module contains a filter called ``itk::SplitComponentsImageFilter``.
+This filter generates component images from an ``itk::Image`` of, for example,
+``itk::Vector``, ``itk::CovariantVector``, or
+``itk::SymmetricSecondRankTensor``.
 
-For more information, see the Insight Journal article at::
+For more information, see the `Insight Journal article <http://hdl.handle.net/10380/3230>`_::
 
+  McCormick M.
+  An ITK Class that Splits Multi-Component Images
+  The Insight Journal. January-December. 2010.
   http://hdl.handle.net/10380/3230
+  http://www.insight-journal.org/browse/publication/774
 
 
 Installation
@@ -46,7 +50,9 @@ Alternatively, build the module externally with::
   cmake -DITK_DIR=/path/to/ITK-build ../ITKSplitComponents
   make
 
+
 License
 -------
 
-The source code is distributed under the Apache 2.0 License. Please see LICENSE file for details.
+This software is distributed under the Apache 2.0 license. Please see the
+*LICENSE* file for details.
