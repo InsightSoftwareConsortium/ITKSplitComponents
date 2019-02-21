@@ -50,6 +50,6 @@ setup(
     keywords='ITK Higher-order Derivative Gradient',
     url=r'https://github.com/InsightSoftwareConsortium/ITKSplitComponents',
     install_requires=[
-        r'itk'
+        r'itk<5'
     ]
     )
