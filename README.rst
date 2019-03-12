@@ -18,7 +18,7 @@ ITKSplitComponents
 
 Overview
 --------
-
+My changes
 This ITK module contains a filter called ``itk::SplitComponentsImageFilter``.
 This filter generates component images from an ``itk::Image`` of, for example,
 ``itk::Vector``, ``itk::CovariantVector``, or
