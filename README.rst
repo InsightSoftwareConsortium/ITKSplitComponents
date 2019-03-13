@@ -1,20 +1,9 @@
 ITKSplitComponents
 ==================
 
-.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKSplitComponents.svg?style=shield
-    :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKSplitComponents
-
-.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKSplitComponents.svg?branch=master
-    :target: https://travis-ci.org/InsightSoftwareConsortium/ITKSplitComponents
-
-.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itksplitcomponents.svg
-    :target: https://ci.appveyor.com/project/itkrobot/itksplitcomponents
-
-=========== =========== ===========
-   Linux      macOS       Windows
-=========== =========== ===========
-|CircleCI|  |TravisCI|  |AppVeyor|
-=========== =========== ===========
+.. image:: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_apis/build/status/InsightSoftwareConsortium.ITKSplitComponents?branchName=master
+    :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=8&branchName=master
+    :alt:    Build Status
 
 Overview
 --------
