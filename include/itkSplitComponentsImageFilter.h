@@ -85,7 +85,7 @@ public:
 
 protected:
   SplitComponentsImageFilter();
-  ~SplitComponentsImageFilter() override {}
+  ~SplitComponentsImageFilter() override = default;
 
   /** Do not allocate outputs that we will not populate. */
   void AllocateOutputs() override;
