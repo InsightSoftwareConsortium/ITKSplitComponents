@@ -5,6 +5,9 @@ ITKSplitComponents
     :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=8&branchName=master
     :alt:    Build Status
 
+.. image:: https://mybinder.org/badge.svg
+    :target: https://mybinder.org/v2/gh/InsightSoftwareConsortium/ITKSplitComponents/master?filepath=examples%2FITKSplitComponents.ipynb
+
 Overview
 --------
 
@@ -21,6 +24,9 @@ For more information, see the `Insight Journal article <http://hdl.handle.net/10
   http://hdl.handle.net/10380/3230
   http://www.insight-journal.org/browse/publication/774
 
+
+.. image:: https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKSplitComponents/master/images/ITKSplitComponentsAnimation.gif
+  :alt: ITKSplitComponents Notebook
 
 Installation
 ------------
