@@ -5,6 +5,14 @@ ITKSplitComponents
     :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=8&branchName=master
     :alt:    Build Status
 
+.. image:: https://img.shields.io/pypi/v/itk-splitcomponents.svg
+    :target: https://pypi.python.org/pypi/itk-splitcomponents
+    :alt: PyPI Version
+
+.. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
+    :target: https://github.com/InsightSoftwareConsortium/ITKSplitComponents/blob/master/LICENSE
+    :alt: License
+
 .. image:: https://mybinder.org/badge.svg
     :target: https://mybinder.org/v2/gh/InsightSoftwareConsortium/ITKSplitComponents/master?filepath=examples%2FITKSplitComponents.ipynb
 
