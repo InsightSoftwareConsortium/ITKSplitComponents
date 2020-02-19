@@ -24,21 +24,22 @@
 
 #include "itkSplitComponentsImageFilter.h"
 
-int itkSplitComponentsImageFilterTest( int argc, char* argv[] )
+int
+itkSplitComponentsImageFilterTest(int argc, char * argv[])
 {
-  if( argc < 2 )
-    {
+  if (argc < 2)
+  {
     std::cerr << "Usage: " << argv[0];
     std::cerr << " outputImagePrefix ";
     std::cerr << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
   constexpr unsigned int Dimension = 2;
   using PixelType = signed short;
-  using OutputImageType = itk::Image<  PixelType, Dimension >;
-  using VectorType = itk::Vector< PixelType, Dimension >;
-  using InputImageType = itk::Image<  VectorType, Dimension >;
+  using OutputImageType = itk::Image<PixelType, Dimension>;
+  using VectorType = itk::Vector<PixelType, Dimension>;
+  using InputImageType = itk::Image<VectorType, Dimension>;
 
   // Size in every dimension of the output image.
   constexpr unsigned int sizes = 100;
@@ -46,86 +47,85 @@ int itkSplitComponentsImageFilterTest( int argc, char* argv[] )
   InputImageType::Pointer input = InputImageType::New();
 
   using RegionType = InputImageType::RegionType;
-  RegionType region;
+  RegionType            region;
   RegionType::IndexType index;
-  index.Fill( 0 );
-  region.SetIndex( index );
-  RegionType::SizeType  size;
-  for( unsigned int i = 0; i < Dimension; i++ )
-    {
+  index.Fill(0);
+  region.SetIndex(index);
+  RegionType::SizeType size;
+  for (unsigned int i = 0; i < Dimension; i++)
+  {
     size[i] = sizes;
-    }
-  region.SetSize( size );
+  }
+  region.SetSize(size);
 
-  input->SetRegions( region );
+  input->SetRegions(region);
   input->Allocate();
 
-  itk::ImageRegionIteratorWithIndex< InputImageType > it( input, region );
-  VectorType vector;
-  for( it.GoToBegin(); !it.IsAtEnd(); ++it )
-    {
+  itk::ImageRegionIteratorWithIndex<InputImageType> it(input, region);
+  VectorType                                        vector;
+  for (it.GoToBegin(); !it.IsAtEnd(); ++it)
+  {
     index = it.GetIndex();
     vector[0] = index[0];
     vector[1] = index[1];
-    it.Set( vector );
-    }
+    it.Set(vector);
+  }
 
-  using FilterType = itk::SplitComponentsImageFilter< InputImageType, OutputImageType,
-          Dimension >;
+  using FilterType = itk::SplitComponentsImageFilter<InputImageType, OutputImageType, Dimension>;
   FilterType::Pointer filter = FilterType::New();
-  filter->SetInput( input );
+  filter->SetInput(input);
 
-  using WriterType = itk::ImageFileWriter< OutputImageType >;
+  using WriterType = itk::ImageFileWriter<OutputImageType>;
   WriterType::Pointer writer = WriterType::New();
 
   std::ostringstream ostr;
   try
-    {
+  {
     ostr << argv[1] << 0 << ".mha";
-    writer->SetFileName( ostr.str() );
-    writer->SetInput( filter->GetOutput() );
+    writer->SetFileName(ostr.str());
+    writer->SetInput(filter->GetOutput());
     writer->Update();
 
-    ostr.str( "" );
+    ostr.str("");
     ostr << argv[1] << 1 << ".mha";
-    writer->SetFileName( ostr.str() );
-    writer->SetInput( filter->GetOutput( 1 ) );
+    writer->SetFileName(ostr.str());
+    writer->SetInput(filter->GetOutput(1));
     writer->Update();
-    }
-  catch (itk::ExceptionObject& ex)
-    {
-      std::cerr << "Exception caught!" << std::endl;
-      std::cerr << ex << std::endl;
-      return EXIT_FAILURE;
-    }
+  }
+  catch (itk::ExceptionObject & ex)
+  {
+    std::cerr << "Exception caught!" << std::endl;
+    std::cerr << ex << std::endl;
+    return EXIT_FAILURE;
+  }
 
   using ComponentsMaskType = FilterType::ComponentsMaskType;
-  ComponentsMaskType componentsMask( false );
+  ComponentsMaskType componentsMask(false);
   componentsMask[1] = true;
   const ComponentsMaskType oldComponents = filter->GetComponentsMask();
-  if( oldComponents[0] != true )
-    {
+  if (oldComponents[0] != true)
+  {
     std::cerr << "Did not get the expected default ComponentsMask." << std::endl;
     return EXIT_FAILURE;
-    }
-  filter->SetComponentsMask( componentsMask );
+  }
+  filter->SetComponentsMask(componentsMask);
   const ComponentsMaskType newComponents = filter->GetComponentsMask();
-  if( newComponents[0] != false )
-    {
+  if (newComponents[0] != false)
+  {
     std::cerr << "Did not get the expected modified ComponentsMask." << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
   try
-    {
+  {
     filter->Update();
-    }
-  catch (itk::ExceptionObject& ex)
-    {
-      std::cerr << "Exception caught!" << std::endl;
-      std::cerr << ex << std::endl;
-      return EXIT_FAILURE;
-    }
+  }
+  catch (itk::ExceptionObject & ex)
+  {
+    std::cerr << "Exception caught!" << std::endl;
+    std::cerr << ex << std::endl;
+    return EXIT_FAILURE;
+  }
 
   return EXIT_SUCCESS;
 }
