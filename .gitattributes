@@ -1,7 +1,14 @@
-*.h      hooks.style
-*.txx    hooks.style
-*.cxx    hooks.style
+# Custom attribute to mark sources as using our C++/C code style.
+[attr]our-c-style  whitespace=tab-in-indent,no-lf-at-eof  hooks.style=KWStyle,clangformat
 
-# Want namespace defined.
-/Code/split-components.cxx hooks.style=uncrustify
-/Code/SplitComponentsArgs.h hooks.style=uncrustify
+*.c              our-c-style
+*.h              our-c-style
+*.cxx            our-c-style
+*.hxx            our-c-style
+*.txx            our-c-style
+*.txt            whitespace=tab-in-indent,no-lf-at-eof
+*.cmake          whitespace=tab-in-indent,no-lf-at-eof
+
+# ExternalData content links must have LF newlines
+*.md5            crlf=input
+*.sha512         crlf=input
