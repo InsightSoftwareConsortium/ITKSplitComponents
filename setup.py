@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='itk-splitcomponents',
-    version='2.0.2',
+    version='2.0.3',
     author='Matthew M. McCormick',
     author_email='matt.mccormick@kitware.com',
     packages=['itk'],
