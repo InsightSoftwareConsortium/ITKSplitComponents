@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='itk-splitcomponents',
-    version='2.0.5',
+    version='2.0.6',
     author='Matthew M. McCormick',
     author_email='matt.mccormick@kitware.com',
     packages=['itk'],
@@ -50,6 +50,6 @@ setup(
     keywords='ITK Higher-order Derivative Gradient',
     url=r'https://github.com/InsightSoftwareConsortium/ITKSplitComponents',
     install_requires=[
-        r'itk>=5.2.0.post2'
+        r'itk>=5.3rc04'
     ]
     )
