@@ -135,7 +135,7 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        python-version: [36, 37, 38, 39]
+        python-version: [37, 38, 39, 310]
         include:
           - itk-python-git-tag: "v5.3rc04"
 
@@ -207,7 +207,7 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        python-version-minor: [6, 7, 8, 9]
+        python-version-minor: [7, 8, 9, 10]
         include:
           - itk-python-git-tag: "v5.3rc04"
 
