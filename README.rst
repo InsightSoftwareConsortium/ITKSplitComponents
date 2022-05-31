@@ -22,13 +22,13 @@ This filter generates component images from an ``itk::Image`` of, for example,
 ``itk::Vector``, ``itk::CovariantVector``, or
 ``itk::SymmetricSecondRankTensor``.
 
-For more information, see the `Insight Journal article <http://hdl.handle.net/10380/3230>`_::
+For more information, see the `Insight Journal article <https://hdl.handle.net/10380/3230>`_::
 
   McCormick M.
   An ITK Class that Splits Multi-Component Images
   The Insight Journal. January-December. 2010.
-  http://hdl.handle.net/10380/3230
-  http://www.insight-journal.org/browse/publication/774
+  https://hdl.handle.net/10380/3230
+  https://www.insight-journal.org/browse/publication/774
 
 
 .. image:: https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKSplitComponents/master/images/ITKSplitComponentsAnimation.gif
