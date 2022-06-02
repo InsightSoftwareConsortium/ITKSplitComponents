@@ -26,7 +26,7 @@ setup(
                      'images of vectors, tensors, etc.\n'
                      'Please refer to:\n'
                      'M. McCormick, "An ITK Class that Splits Multi-Component Images.", '
-                     'Insight Journal, July-December 2010, http://hdl.handle.net/10380/3230',
+                     'Insight Journal, July-December 2010, https://hdl.handle.net/10380/3230',
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
