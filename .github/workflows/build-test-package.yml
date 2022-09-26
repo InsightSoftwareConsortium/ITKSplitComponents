@@ -3,8 +3,8 @@ name: Build, test, package
 on: [push,pull_request]
 
 env:
-  itk-git-tag: "835dc01388d22c4b4c9a46b01dbdfe394ec23511"
-  itk-wheel-tag: "v5.3rc04.post2" # Same ITK C++ reference commit, different tag name
+  itk-git-tag: "171fb2ba33a87041f99328a2f26612ff33aa9cc8"
+  itk-wheel-tag: "v5.3rc04.post3" # Same ITK C++ reference commit, different tag name
 
 jobs:
   build-test-cxx:
@@ -80,7 +80,7 @@ jobs:
     - name: 'Specific XCode version'
       run: |
         ls "/Applications"
-        sudo xcode-select -s "/Applications/Xcode_11.7.app"
+        sudo xcode-select -s "/Applications/Xcode_13.2.1.app"
 
     - name: Get specific version of CMake, Ninja
       uses: lukka/get-cmake@v3.18.3
