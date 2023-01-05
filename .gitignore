@@ -3,3 +3,7 @@
 !/Article/*.pdf
 !/Article/*.sty
 !/Article/*.cls
+
+examples/.ipynb_checkpoints
+examples/*.png
+
