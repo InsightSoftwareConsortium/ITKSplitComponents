@@ -1,4 +1,5 @@
 ipywidgets>=7.1.2
 itk-splitcomponents
 itk>=5.0rc1
+traitlets<5.7.0
 itkwidgets
