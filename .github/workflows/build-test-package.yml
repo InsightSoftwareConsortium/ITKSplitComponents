@@ -12,5 +12,7 @@ jobs:
     uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@03626a23c22246e89e36c7e918a158c440f9b099
     with:
       test-notebooks: true
+      itk-python-package-org: 'tbirdso'
+      itk-python-package-tag: 'b0767698dc0c48af2aedff2842f80f10d6e8734a'
     secrets:
       pypi_password: ${{ secrets.pypi_password }}
