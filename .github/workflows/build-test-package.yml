@@ -13,7 +13,7 @@ jobs:
     with:
       test-notebooks: true
       itk-python-package-org: 'tbirdso'
-      itk-python-package-tag: '0609b2083a9aaf8d41fa58984f692c683d244668'
+      itk-python-package-tag: '59450a979f41704cd7f8d1712f5d1adfc71bbe2d'
       manylinux-platforms: '[]' # FIXME
     secrets:
       pypi_password: ${{ secrets.pypi_password }}
