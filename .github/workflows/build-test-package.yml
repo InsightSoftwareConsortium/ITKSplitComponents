@@ -4,13 +4,14 @@ on: [push,pull_request]
 
 jobs:
   cxx-build-workflow:
-    uses: thewtex/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-cxx.yml@7428ef9b6ac4449b2cfc1e08ab550fac4d41b6cc
+    uses: thewtex/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-cxx.yml@74345376bd13797727c82ba5633e0161e10a2037
     with:
       itk-cmake-options: '-DITK_BUILD_DEFAULT_MODULES:BOOL=OFF -DITKGroup_Core:BOOL=ON'
 
   python-build-workflow:
-    uses: thewtex/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@7428ef9b6ac4449b2cfc1e08ab550fac4d41b6cc
+    uses: thewtex/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@74345376bd13797727c82ba5633e0161e10a2037
     with:
+      python3-minor-versions: '["8","11","12"]'
       test-notebooks: true
     secrets:
       pypi_password: ${{ secrets.pypi_password }}
