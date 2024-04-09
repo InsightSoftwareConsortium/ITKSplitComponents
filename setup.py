@@ -50,6 +50,6 @@ setup(
     keywords='itk',
     url=r'https://github.com/InsightSoftwareConsortium/ITKSplitComponents',
     install_requires=[
-        r'itk>=5.4rc1'
+        r'itk>=5.4rc3'
     ]
     )
