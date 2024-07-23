@@ -1,7 +1,9 @@
 ITKSplitComponents
 ==================
 
-.. image:: https://github.com/InsightSoftwareConsortium/ITKSplitComponents/workflows/Build,%20test,%20package/badge.svg
+.. image:: https://github.com/InsightSoftwareConsortium/ITKSplitComponents/actions/workflows/build-test-package.yml/badge.svg
+    :target: https://github.com/InsightSoftwareConsortium/ITKSplitComponents/actions/workflows/build-test-package.yml
+    :alt: Build, test, package
 
 .. image:: https://img.shields.io/pypi/v/itk-splitcomponents.svg
     :target: https://pypi.python.org/pypi/itk-splitcomponents
