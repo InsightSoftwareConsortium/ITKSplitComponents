@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "itk-splitcomponents"
-version = "2.2.1"
+version = "2.2.2"
 description = "ITK filters to split a multi-component pixel image into component-wise scalar images"
 readme = "README.rst"
 license = {file = "LICENSE"}
