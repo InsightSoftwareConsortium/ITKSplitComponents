@@ -4,12 +4,12 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "itk-splitcomponents"
-version = "2.2.4"
+version = "2.3b1"
 description = "ITK filters to split a multi-component pixel image into component-wise scalar images"
 readme = "README.rst"
 license = {file = "LICENSE"}
 authors = [
-    { name = "Matthew M. McCormick", email = "matt.mccormick@kitware.com" },
+    { name = "Matthew M. McCormick", email = "matt@fideus.io" },
 ]
 keywords = [
     "itk",
@@ -35,7 +35,7 @@ classifiers = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "itk == 5.4.*",
+    "itk == 6.0b1"
 ]
 
 [project.urls]
