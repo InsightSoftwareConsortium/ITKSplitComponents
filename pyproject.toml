@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "itk-splitcomponents"
-version = "2.3b1"
+version = "2.3b2"
 description = "ITK filters to split a multi-component pixel image into component-wise scalar images"
 readme = "README.rst"
 license = {file = "LICENSE"}
@@ -13,6 +13,7 @@ authors = [
 ]
 keywords = [
     "itk",
+    "InsightToolkit",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -35,7 +36,7 @@ classifiers = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "itk == 6.0b1"
+    "itk == 5.4.*",
 ]
 
 [project.urls]
@@ -46,7 +47,7 @@ Homepage = "https://github.com/InsightSoftwareConsortium/ITKSplitComponents"
 # The versions of CMake to allow. If CMake is not present on the system or does
 # not pass this specifier, it will be downloaded via PyPI if possible. An empty
 # string will disable this check.
-cmake.version = ">=3.16.3"
+cmake.version = ">=3.22.1"
 
 # A list of args to pass to CMake when configuring the project. Setting this in
 # config or envvar will override toml. See also ``cmake.define``.
