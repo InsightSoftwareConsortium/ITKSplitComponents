@@ -1,13 +1,12 @@
 itk_module_test()
-set( ITKSplitComponentsTests
+set( SplitComponentsTests
   itkSplitComponentsImageFilterTest.cxx
   )
-CreateTestDriver( ITKSplitComponents "${ITKSplitComponents-Test_LIBRARIES}" "${ITKSplitComponentsTests}" )
+CreateTestDriver( SplitComponents "${SplitComponents-Test_LIBRARIES}" "${SplitComponentsTests}" )
 
-set( TEMP ${ITK_TEST_OUTPUT_DIR} )
 
 itk_add_test(NAME itkSplitComponentsImageFilterTest
-  COMMAND ITKSplitComponentsTestDriver
+  COMMAND SplitComponentsTestDriver
   --compare
     DATA{Baseline/itkSplitComponentsImageFilterTestBaseline0.mha}
     itkSplitComponentsImageFilterTestOutput0.mha
